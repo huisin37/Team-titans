@@ -2,6 +2,14 @@
 
 
 
+# Sprint 2
+## Missing Value Treatment
+print(df.isnull().sum())
+
+updated_df = df.dropna(axis=1)
+updated_df.info()
+
+
 # Sprint 5
 ## Pivot Tables
 ### Pivot Table 1 (Claim frequency of each agency)
