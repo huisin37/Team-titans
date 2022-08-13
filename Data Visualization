@@ -25,7 +25,8 @@ print(df.corr())
 
 #Correlation of Duration, Net Sales, Commision (in value) and Age
 f,ax = plt.subplots(figsize=(10, 10))
-sns.heatmap(df.corr(), annot=True, linewidth=0.5,linecolor="red", fmt= '.2f', ax=ax)
+plt.title('Correlation of Columns using Heatmap')
+sns.heatmap(df.corr(), annot=True, cmap="YlGnBu", linewidth=0.5, linecolor="black", fmt= '.2f', ax=ax)
 
 #Correlation of Net Sales and Duration by using Scatterplot
 f,ax = plt.subplots(figsize=(10, 10))
