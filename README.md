@@ -4,10 +4,10 @@
 
 # Sprint 5
 ## Pivot Tables
-### Pivot Table 1
+### Pivot Table 1 (Claim frequency of each agency)
 ![](Images/PivotTable1.png)
 
-### Pivot Table 2
+### Pivot Table 2 (Claim frequency of specific destinations with duration = 60)
 ![](Images/PivotTable2.png)
 
 
