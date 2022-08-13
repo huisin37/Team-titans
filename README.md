@@ -4,10 +4,16 @@
 
 # Sprint 2
 ## Missing Value Treatment
+### Determine which column has missing values
 print(df.isnull().sum())
 
+### Remove the column as pproximately 70% are missing values
 updated_df = df.dropna(axis=1)
-updated_df.info()
+print(updated_df.info())
+
+
+## Outlier Analysis
+
 
 
 # Sprint 5
