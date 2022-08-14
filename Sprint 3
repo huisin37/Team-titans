@@ -166,7 +166,7 @@ for i in range(len(log_v)):
     updated_df[trf].plot(kind='hist')
 
 
-## Data transformation(arrange row)
+## Data transformation(arrange columns)
 p=pd.DataFrame(updated_df,columns=['Product Name', 'Destination', 'Distribution Channel','Agency','Agency Type','Age','Gender','Claim','Duration','Net Sales','Commision (in value)'])
 print(p)
 
