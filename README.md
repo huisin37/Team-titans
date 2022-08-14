@@ -149,21 +149,23 @@ print(df.outliers.value_counts())
 
 
 ## Data transformation(log transformation)
+df=df.dropna()
 log_v=['Duration','Net Sales','Commision (in value)','Age']
 u=plt.figure(figsize=(25,10))
 for i in range(len(log_v)):
     v=log_v[i]
     trf= "log_"+v
-    updated_df[trf]=np.log10(updated_df[v]+1)
+    df[trf]=np.log10(df[v]+1)
     
     s=u.add_subplot(2,5,i+1)
     s.set_xlabel(v)
-    updated_df[trf].plot(kind='hist')
+    df[trf].plot(kind='hist')
 
 
 ## Data transformation(arrange columns)
-p=pd.DataFrame(updated_df,columns=['Product Name', 'Destination', 'Distribution Channel','Agency','Agency Type','Age','Gender','Claim','Duration','Net Sales','Commision (in value)'])
-print(p)
+p=pd.DataFrame(updated_df,columns=['Product Name', 'Destination', 'Distribution Channel','Agency','Agency Type','Age','Claim','Duration','Net Sales','Commision (in value)'])
+modified_df = p.sort_values(by = ['Product Name','Age'])
+print(modified_df)
 
 plt.show()
 
