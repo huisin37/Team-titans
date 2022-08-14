@@ -7,7 +7,7 @@
 ### Determine which column has missing values
 print(df.isnull().sum())
 
-### Remove the column as pproximately 70% are missing values
+### Remove the column as approximately 70% are missing values
 updated_df = df.dropna(axis=1)
 print(updated_df.info())
 
