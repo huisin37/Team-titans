@@ -52,29 +52,29 @@ threshold = 3
 ### Position of the outlier for Age
 print(np.where(abs(z4) > 3))
 
-### Identify outlier (graphical method)
-# boxplot method(for Duration)
+## Identify outlier (graphical method)
+### boxplot method(for Duration)
 f,a=plt.subplots(figsize=(10,6))
 sns.boxplot(df['Duration'])
 plt.title("Boxplot of Duration")
 
-# boxplot method(for Net Sales)
+### boxplot method(for Net Sales)
 f,a=plt.subplots(figsize=(10,6))
 sns.boxplot(df['Net Sales'])
 plt.title("Boxplot of Net Sales")
 
-# boxplot method(for Commision)
+###` boxplot method(for Commision)
 f,a=plt.subplots(figsize=(10,6))
 sns.boxplot(df['Commision (in value)'])
 plt.title("Boxplot of Commision")
 
-# boxplot method(for Age)
+### boxplot method(for Age)
 f,a=plt.subplots(figsize=(10,6))
 sns.boxplot(df['Age'])
 plt.title("Boxplot of Age")
 
-### Count for outliers
-# Duration
+## Count for outliers
+### Duration
 d_mean=df['Duration'].agg(['mean','std'])
 mu = d_mean.loc['mean']
 sigma = d_mean.loc['std']
@@ -92,7 +92,7 @@ df['outliers']=df.apply(get_outliers,axis=1)
 
 print(df.outliers.value_counts())
 
-# Net Sales
+### Net Sales
 d_mean=df['Net Sales'].agg(['mean','std'])
 mu = d_mean.loc['mean']
 sigma = d_mean.loc['std']
@@ -110,7 +110,7 @@ df['outliers']=df.apply(get_outliers,axis=1)
 
 print(df.outliers.value_counts())
 
-# Commision
+### Commision
 
 d_mean=df['Commision (in value)'].agg(['mean','std'])
 mu = d_mean.loc['mean']
@@ -129,7 +129,7 @@ df['outliers']=df.apply(get_outliers,axis=1)
 
 print(df.outliers.value_counts())
 
-# Age
+### Age
 d_mean=df['Age'].agg(['mean','std'])
 mu = d_mean.loc['mean']
 sigma = d_mean.loc['std']
@@ -148,7 +148,7 @@ df['outliers']=df.apply(get_outliers,axis=1)
 print(df.outliers.value_counts())
 
 
-### Data transformation(log transformation)
+## Data transformation(log transformation)
 log_v=['Duration','Net Sales','Commision (in value)','Age']
 u=plt.figure(figsize=(25,10))
 for i in range(len(log_v)):
@@ -161,7 +161,7 @@ for i in range(len(log_v)):
     updated_df[trf].plot(kind='hist')
 
 
-# Data transformation(arrange row)
+## Data transformation(arrange row)
 p=pd.DataFrame(updated_df,columns=['Product Name', 'Destination', 'Distribution Channel','Agency','Agency Type','Age','Gender','Claim','Duration','Net Sales','Commision (in value)'])
 print(p)
 
