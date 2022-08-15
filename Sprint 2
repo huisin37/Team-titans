@@ -45,9 +45,11 @@ sns.pairplot(df, hue = "Agency Type", palette= ['r','g'])
 
 
 #Correlation of Net Sales and Commision (in value) by grouping of Agency Type
+f,ax = plt.subplots(figsize=(10, 10))
 plt.title('Correlation of Net Sales and Commision (in value) by grouping of Agency Type using Scatterplot')
 sns.scatterplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type',palette = ['#e41a1c','#377eb8'])
 plt.axhline(0, c='black', ls='--')
+f,ax = plt.subplots(figsize=(10, 10))
 sns.lmplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type',palette = ['#e41a1c','#377eb8'])
 plt.title('Correlation of Net Sales and Commision (in value) by grouping of Agency Type using Line Plot')
 plt.axhline(0, c='black', ls='--')
@@ -56,6 +58,7 @@ plt.axhline(0, c='black', ls='--')
 df.groupby('Agency Type')[['Net Sales','Commision (in value)']].corr()
 
 #The Distribution plot by Age
+f,ax = plt.subplots(figsize=(10, 10))
 sns.distplot(df['Age'], color ='#4daf4a')
 plt.title("The Distribution plot of Age")
 
@@ -70,7 +73,6 @@ plt.axhline(0, c='black', ls='--')
 df['age_bins'] = pd.cut(df['Age'], bins = [0, 20, 40, 60, 80, 100, 120])
 
 plt.figure(figsize=(12,4))
-
 sns.boxplot(x='age_bins', y='Commision (in value)', data=df) 
 plt.title('Commision according to age categories', size='23')
 plt.xticks(rotation='25')
