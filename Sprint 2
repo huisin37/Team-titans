@@ -56,7 +56,7 @@ plt.axhline(0, c='black', ls='--')
 df.groupby('Agency Type')[['Net Sales','Commision (in value)']].corr()
 
 #The Distribution plot by Age
-distPlot = sns.distplot(df['Age'], color ='#4daf4a')
+sns.distplot(df['Age'], color ='#4daf4a')
 plt.title("The Distribution plot of Age")
 
 meanAgencyType = df.groupby(by = "Agency Type")["Net Sales"].mean()
