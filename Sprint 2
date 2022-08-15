@@ -49,7 +49,7 @@ f,ax = plt.subplots(figsize=(10, 10))
 plt.title('Correlation of Net Sales and Commision (in value) by grouping of Agency Type using Scatterplot')
 sns.scatterplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type',palette = ['#e41a1c','#377eb8'])
 plt.axhline(0, c='black', ls='--')
-f,ax = plt.subplots(figsize=(10, 10))
+
 sns.lmplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type',palette = ['#e41a1c','#377eb8'])
 plt.title('Correlation of Net Sales and Commision (in value) by grouping of Agency Type using Line Plot')
 plt.axhline(0, c='black', ls='--')
@@ -58,9 +58,10 @@ plt.axhline(0, c='black', ls='--')
 df.groupby('Agency Type')[['Net Sales','Commision (in value)']].corr()
 
 #The Distribution plot by Age
-f,ax = plt.subplots(figsize=(10, 10))
-sns.distplot(df['Age'], color ='#4daf4a')
+
+distPlot = sns.distplot(df['Age'], color ='#4daf4a')
 plt.title("The Distribution plot of Age")
+print(distPlot)
 
 meanAgencyType = df.groupby(by = "Agency Type")["Net Sales"].mean()
 print(meanAgencyType)
