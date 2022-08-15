@@ -1,7 +1,6 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import pycountry_convert as pc
 
 print("Setup Complete")
 df = pd.read_excel (r'C:\Users\user\Downloads\MASA.xlsx')
@@ -23,61 +22,55 @@ Age = df.groupby('Age').size()
 df.describe()
 print(df.corr())
 
-#Correlation of Duration, Net Sales, Commision (in value) and Age
+#Correlation of Columns using Heatmap
 f,ax = plt.subplots(figsize=(10, 10))
 plt.title('Correlation of Columns using Heatmap')
 sns.heatmap(df.corr(), annot=True, cmap="YlGnBu", linewidth=0.5, linecolor="black", fmt= '.2f', ax=ax)
 
 #Correlation of Net Sales and Duration by using Scatterplot
 f,ax = plt.subplots(figsize=(10, 10))
-sns.scatterplot(x="Duration", y="Net Sales", data= df)
+plt.title('Correlation of Net Sales and Duration by using Scatterplot')
+sns.scatterplot(x="Duration", y="Net Sales", data= df, color='green')
 plt.axhline(0, c='black', ls='--')
 
 
 #Correlation of Duration and Age by using Scatterplot
 f,ax = plt.subplots(figsize=(10, 10))
-sns.scatterplot(x="Duration", y="Age", data= df)
-
-#Correlation of Commision (in value) and Duration by using Scatterplot
-f,ax = plt.subplots(figsize=(10, 10))
-sns.scatterplot(x="Duration", y="Commision (in value)", data= df)
+plt.title('Correlation of Duration and Age by using Scatterplot')
+sns.scatterplot(x="Duration", y="Age", data= df, color = '#228B22')
 
 #Pairplot by grouping as Agency Type
-f,ax = plt.subplots(figsize=(10, 10))
 sns.set(style = "ticks")
-sns.pairplot(df, hue = "Agency Type")
+sns.pairplot(df, hue = "Agency Type", palette= ['r','g'])
+
 
 #Correlation of Net Sales and Commision (in value) by grouping of Agency Type
-f,ax = plt.subplots(figsize=(10, 10))
-sns.scatterplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type')
+plt.title('Correlation of Net Sales and Commision (in value) by grouping of Agency Type using Scatterplot')
+sns.scatterplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type',palette = ['#e41a1c','#377eb8'])
 plt.axhline(0, c='black', ls='--')
-f,ax = plt.subplots(figsize=(10, 10))
-sns.lmplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type')
+sns.lmplot(x="Commision (in value)", y="Net Sales", data= df, hue='Agency Type',palette = ['#e41a1c','#377eb8'])
+plt.title('Correlation of Net Sales and Commision (in value) by grouping of Agency Type using Line Plot')
 plt.axhline(0, c='black', ls='--')
 
 #Correlation of the Net Sales and Commision (in value)
-f,ax = plt.subplots(figsize=(10, 10))
 df.groupby('Agency Type')[['Net Sales','Commision (in value)']].corr()
 
 #The Distribution plot by Age
-f,ax = plt.subplots(figsize=(10, 10))
-distPlot = sns.distplot(df['Age'])
-plt.title("Age")
-
+distPlot = sns.distplot(df['Age'], color ='#4daf4a')
+plt.title("The Distribution plot of Age")
 
 meanAgencyType = df.groupby(by = "Agency Type")["Net Sales"].mean()
 print(meanAgencyType)
-f,ax = plt.subplots(figsize=(10, 10))
-sns.violinplot(x = "Agency Type", y = "Net Sales", data = df )
-
-meanProductName = df.groupby(by = "Product Name")["Net Sales"].mean()
-print(meanProductName)
+plt.title('The Violin Plot of Agency Type with Net Sales')
+sns.violinplot(x = "Agency Type", y = "Net Sales", data = df, palette =['#e41a1c','#377eb8'])
+plt.axhline(0, c='black', ls='--')
 
 
+#Box plot of Commision according to age categories
 df['age_bins'] = pd.cut(df['Age'], bins = [0, 20, 40, 60, 80, 100, 120])
 
 plt.figure(figsize=(12,4))
-f,ax = plt.subplots(figsize=(10, 10))
+
 sns.boxplot(x='age_bins', y='Commision (in value)', data=df) 
 plt.title('Commision according to age categories', size='23')
 plt.xticks(rotation='25')
@@ -85,7 +78,11 @@ plt.grid(True)
 plt.ylabel('Commision (in value)',size=18)
 plt.xlabel('Age',size=18)
 
+
 #Lineplot of Age and Net Sales
 f,ax = plt.subplots(figsize=(10, 10))
-sns.lineplot(x="Age", y='Net Sales',data = df);
+plt.title('Line Plot of Net Sales with Age (years)')
+sns.lineplot(x="Age", y='Net Sales',data = df, color='#4daf4a' )
 plt.show()
+
+
